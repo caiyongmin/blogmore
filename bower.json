@@ -1,0 +1,33 @@
+{
+  "name": "blogmore",
+  "description": "a simple blog generator",
+  "main": "bin.js",
+  "authors": [
+    "caiyongmin"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "blogmore",
+    "blog",
+    "learnmore"
+  ],
+  "homepage": "https://github.com/caiyongmin/blogmore",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment": "~2.10.6",
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "highlight": "~9.0.0"
+  }
+}

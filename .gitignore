@@ -28,6 +28,10 @@ node_modules
 
 # bower components
 **/components
+**/bower_components
 
 # Project data file
 **/PSD
+
+# IDEA project file
+.idea/

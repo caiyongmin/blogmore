@@ -1,0 +1,201 @@
+/* common css */
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+}
+
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+
+/* common css */
+
+/* sidebar css */
+.section-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    background-color: #1abc9c;
+    overflow: auto;
+}
+
+.section-sidebar .avator-wrap {
+    width: 115px;
+    height: 115px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.section-sidebar .avator-wrap img {
+    border: 5px solid #fff;
+    border-radius: 50%;
+}
+
+.sidebar-title {
+    text-align: center;
+    text-shadow: 0 1px 0 #eee;
+}
+
+.sidebar-title-desc {
+    text-align: center;
+}
+
+.section-sidebar .category-panel {
+    margin-left: 80px;
+    margin-top: 30px;
+}
+
+.section-sidebar .category-title {
+}
+
+.section-sidebar .category-list {
+}
+
+.section-sidebar .category-list li {
+}
+
+.section-sidebar .category-list li a {
+    color: #eee;
+}
+
+.section-sidebar .category-list li a:hover {
+}
+
+.section-sidebar .calender-panel {
+    margin-left: 80px;
+    margin-top: 30px;
+}
+
+.section-sidebar .calender-title {
+}
+
+.section-sidebar .calender-list {
+}
+
+.section-sidebar .calender-list li {
+}
+
+.section-sidebar .calender-list li a {
+    color: #eee;
+}
+
+.section-sidebar .calender-list li a:hover {
+}
+
+/* sidebar css */
+
+/* content css */
+.section-content {
+    margin-left: 300px;
+    color: #666;
+    background-color: #ecf0f1;
+}
+
+.article-list {
+}
+
+.article-item {
+    position: relative;
+    margin: 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.article-header {
+    padding-top: 15px;
+}
+
+.article-title {}
+.article-title a {
+    display: block;
+    padding-left: 14px;
+    border-left: 6px solid #16a085;
+    color: #333;
+}
+.article-title a:hover {
+    text-decoration: none;
+    opacity: .8;
+}
+.article-date {
+    padding-right: 20px;
+}
+
+.article-date .icon-date {
+    font-size: 18px;
+    padding-right: 3px;
+}
+
+.article-body {
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+.article-footer {
+    font-size: 14px;
+    padding: 18px 0 12px;
+    border-top: 1px solid #ddd;
+    margin: 30px 20px 0;
+}
+
+.article-category-list {}
+.article-category-info {
+    float: left;
+    height: 18px;
+    line-height: 20px;
+}
+.article-category-list a {
+    position: relative;
+    float: left;
+    height: 18px;
+    line-height: 20px;
+    padding: 0 5px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin: 0 14px 0 6px;
+    background-color: #88acdb;
+    color: #fff;
+}
+.article-category-list a:hover {
+    text-decoration: none;
+    opacity: .8;
+}
+.article-category-list a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -18px;
+    width: 0;
+    height: 0;
+    border-width: 9px;
+    border-style: solid;
+    border-color: transparent #88acdb transparent transparent;
+}
+.article-category-list a:after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: -2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+    background-color: #fff;
+}
+
+.article-more-link {
+    height: 18px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+/* content css */

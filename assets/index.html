@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="blogApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1"/>
+    <meta name="renderer" content="webkit">
+    <meta name="author" content="<%= author %>">
+    <meta name="description" content="<%= description %>">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="./static/stylesheets/typo.css">
+    <link rel="stylesheet" href="./static/iconfont/iconfont.css">
+    <link rel="stylesheet" href="./static/stylesheets/style.css">
+</head>
+<body ng-controller="blogController">
+<!-- 侧边栏 -->
+<div class="section-sidebar">
+    <div class="avator-wrap">
+        <img src="./static/images/avator.jpeg" alt="">
+    </div>
+    <h1 class="sidebar-title">XBlog</h1>
+    <p class="sidebar-title-desc">一个博客生成器，Make Fun！</p>
+    <div class="category-panel">
+        <p class="category-title">分类目录</p>
+        <ui class="category-list">
+            <li><a href="#">JavaScript 相关</a></li>
+            <li><a href="#">CSS 相关</a></li>
+            <li><a href="#">NodeJS 相关</a></li>
+        </ui>
+    </div>
+    <div class="calender-panel">
+        <p class="calender-title">时间分类目录</p>
+        <ui class="calender-list">
+            <li><a href="#">2015年12月</a></li>
+            <li><a href="#">2015年11月</a></li>
+            <li><a href="#">2015年10月</a></li>
+            <li><a href="#">2015年09月</a></li>
+        </ui>
+    </div>
+</div>
+<!-- 侧边栏 end -->
+<!-- 主内容区 -->
+<div class="section-content">
+    <div class="article-list clearfix">
+        <div class="article-item">
+            <div class="article-header clearfix">
+                <h2 class="article-title fl"><a href="../_post/New%20Blog.html">CSS font-family 网页字体使用小结</a></h2>
+                <span class="article-date fr"><span class="iconfont icon-date"></span>2015-12-09</span>
+            </div>
+            <div class="article-body">
+                <p>一直到最近才开始调整博客的字体，之前都是全站微软雅黑了事。慢慢调整后发现 font-family 这个属性相关的知识还是不少的，整理一下常用的部分，分享于此。</p>
+                <p>Lorem ipsum dolor sit amet, conquam asperiores, assumenda autem consequuntur, dicta dignissimos eaque eius fuga fugiat hic iure natus nisi quam sint, suscipit velit. Eius, tempora.</p>
+            </div>
+            <div class="article-footer clearfix">
+                <div class="article-category-list fl">
+                    <span class="article-category-info">分类：</span>
+                    <a href="#">JavaScript 相关</a>
+                    <a href="#">CSS 相关</a>
+                </div>
+                <a class="article-more-link fr" href="../_post/New%20Blog.html">Read More&gt;&gt;</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 主内容区 end -->
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-route/angular-route.min.js"></script>
+<script src="../bower_components/moment/moment.js"></script>
+<script src="../bower_components/highlight/src/highlight.js"></script>
+<script src="./static/javascripts/global.js"></script>
+</body>
+</html>
