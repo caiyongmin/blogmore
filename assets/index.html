@@ -23,18 +23,24 @@
     <div class="category-panel">
         <p class="category-title">分类目录</p>
         <ui class="category-list">
-            <li><a href="#">JavaScript 相关</a></li>
-            <li><a href="#">CSS 相关</a></li>
-            <li><a href="#">NodeJS 相关</a></li>
+            <!--<li><a href="#">JavaScript 相关</a></li>-->
+            <!--<li><a href="#">CSS 相关</a></li>-->
+            <!--<li><a href="#">NodeJS 相关</a></li>-->
+            <li ng-repeat="category in categories track by $index">
+                <a href="#" ng-click="jumpToCat(category)"><span ng-bind="category"></span></a>
+            </li>
         </ui>
     </div>
     <div class="calender-panel">
         <p class="calender-title">时间分类目录</p>
         <ui class="calender-list">
-            <li><a href="#">2015年12月</a></li>
+            <!--<li><a href="#">2015年12月</a></li>
             <li><a href="#">2015年11月</a></li>
             <li><a href="#">2015年10月</a></li>
-            <li><a href="#">2015年09月</a></li>
+            <li><a href="#">2015年09月</a></li>-->
+            <li ng-repeat="dateObj in datesObjArr track by $index">
+                <a href="#" ng-click="jumpToDate(dateObj)">{{dateObj.year}}年{{dateObj.month}}月</a>
+            </li>
         </ui>
     </div>
 </div>
@@ -42,10 +48,10 @@
 <!-- 主内容区 -->
 <div class="section-content">
     <div class="article-list clearfix">
-        <div class="article-item">
+        <div ng-repeat="article in articles track by $index" class="article-item">
             <div class="article-header clearfix">
-                <h2 class="article-title fl"><a href="../_post/New%20Blog.html">CSS font-family 网页字体使用小结</a></h2>
-                <span class="article-date fr"><span class="iconfont icon-date"></span>2015-12-09</span>
+                <h2 class="article-title fl"><a href="#" ng-click="jumpToArticle(article)">{{article.title}}</a></h2>
+                <span class="article-date fr"><span class="iconfont icon-date"></span>{{article.date}}</span>
             </div>
             <div class="article-body">
                 <p>一直到最近才开始调整博客的字体，之前都是全站微软雅黑了事。慢慢调整后发现 font-family 这个属性相关的知识还是不少的，整理一下常用的部分，分享于此。</p>
@@ -54,10 +60,11 @@
             <div class="article-footer clearfix">
                 <div class="article-category-list fl">
                     <span class="article-category-info">分类：</span>
-                    <a href="#">JavaScript 相关</a>
-                    <a href="#">CSS 相关</a>
+                    <!--<a href="#">JavaScript 相关</a>
+                    <a href="#">CSS 相关</a>-->
+                    <a href="#" ng-repeat="category in article.categories">{{category}}</a>
                 </div>
-                <a class="article-more-link fr" href="../_post/New%20Blog.html">Read More&gt;&gt;</a>
+                <a class="article-more-link fr" href="#" ng-click="jumpToArticle(article)">Read More&gt;&gt;</a>
             </div>
         </div>
     </div>

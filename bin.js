@@ -97,7 +97,7 @@ program
 });
 
 program
-.command('server')
+.command('serve')
 .usage(multiline(function () {
     /*
 
