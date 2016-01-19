@@ -38,12 +38,20 @@ blogModule.service('blogData', ['$http', '$q',
 blogModule.service('utilFunc', ['$window',
     function (win) {
         return {
-            dateToObjArr: function (date) {
-                var arr = date.split('-');
-                return {
-                    year: arr[0],
-                    month: arr[1],
-                    day: arr[2]
+            dateToObj: function (date) {
+                var arr = [];
+                if (date.indexOf('-') > -1) {
+                    arr = date.split('-');
+                    return {
+                        year: arr[0],
+                        month: arr[1],
+                        day: arr[2]
+                    }
+                } else {
+                    return {
+                        year: date.substring(0, 4),
+                        month: date.substring(4)
+                    }
                 }
             },
             objToArr: function (obj) {
@@ -71,39 +79,41 @@ blogModule.service('utilFunc', ['$window',
 ]);
 
 blogModule.config(function ($routeProvider) {
-    $routeProvider.when('/:title', {
+    $routeProvider
+    .when('/index', {
+        templateUrl: '../app/static/partials/article-list.html',
+        controller: 'blogController'
+    })
+    .when('/:title', {
         templateUrl: function (params) {
-            console.log(params);
-            return params.title + '.html';
+            return '../app/_post/' + params.title + '.html';
         },
         controller: 'blogController'
     }).when('/:title/error', {
         template: function (params) {
-            console.log(params);
             return '似乎没有 ' + params.title + ' 这篇文章o(╯□╰)o';
         },
         controller: 'blogController'
     }).otherwise({
-        templateUrl: function (params) {
-            return 'index.html';
-        },
-        controller: 'blogController'
+
     })
 });
 
 blogModule.controller('blogController', ['$scope', '$routeParams', '$location', 'blogData', 'utilFunc',
     function ($scope, $routeParams, $location, blogData, utilFunc) {
-        var getBlogData;
+        var getBlogData = {};
         blogData.getData().then(function (returnedData) {
             getBlogData = returnedData;
             var articles = $scope.articles = getBlogData.articles;
-            var dates = $scope.dates = utilFunc.objToArr(getBlogData.dates);
-            var categories = $scope.categories = utilFunc.objToArr(getBlogData.categories);
-            var tags = $scope.tags = utilFunc.objToArr(getBlogData.tags);
+            var categories = $scope.categories = getBlogData.categories;
+            var dates = $scope.dates = getBlogData.dates;
+            var dateCat = $scope.dateCat = utilFunc.objToArr(getBlogData.dates);
+            var categoryCat = $scope.categoryCat = utilFunc.objToArr(getBlogData.categories);
+            var tagCat = $scope.tagCat = utilFunc.objToArr(getBlogData.tags);
 
             var datesObjArr = $scope.datesObjArr = [];
-            dates.forEach(function (date, index) {
-                datesObjArr.push(utilFunc.dateToObjArr(date));
+            dateCat.forEach(function (date, index) {
+                datesObjArr.push(utilFunc.dateToObj(date));
             });
 
             $scope.jumpToArticle = function (article) {
@@ -113,6 +123,14 @@ blogModule.controller('blogController', ['$scope', '$routeParams', '$location', 
                 } else {
                     console.log('error');
                     $location.path('/' + article.title + '/error');
+                }
+            };
+
+            $scope.jumpToCat = function (category) {
+                for (cat in categories) {
+                    if (cat == category) {
+                        articles = categories[cat];
+                    }
                 }
             };
 
