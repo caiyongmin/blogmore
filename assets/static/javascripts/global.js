@@ -102,39 +102,39 @@ blogModule.config(function ($routeProvider) {
 blogModule.controller('blogController', ['$scope', '$routeParams', '$location', 'blogData', 'utilFunc',
     function ($scope, $routeParams, $location, blogData, utilFunc) {
         var getBlogData = {};
+        var data = $scope.data = {};
+        var dataCat = $scope.dataCat = {};
+
         blogData.getData().then(function (returnedData) {
             getBlogData = returnedData;
-            var articles = $scope.articles = getBlogData.articles;
-            var categories = $scope.categories = getBlogData.categories;
-            var dates = $scope.dates = getBlogData.dates;
-            var dateCat = $scope.dateCat = utilFunc.objToArr(getBlogData.dates);
-            var categoryCat = $scope.categoryCat = utilFunc.objToArr(getBlogData.categories);
-            var tagCat = $scope.tagCat = utilFunc.objToArr(getBlogData.tags);
+            data.articles = getBlogData.articles;
+            data.categories = getBlogData.categories;
+            dataCat.category = utilFunc.objToArr(getBlogData.categories);
+            dataCat.date = utilFunc.objToArr(getBlogData.dates);
+            dataCat.tag = utilFunc.objToArr(getBlogData.tags);
+            dataCat.datesObjArr = [];
 
-            var datesObjArr = $scope.datesObjArr = [];
-            dateCat.forEach(function (date, index) {
-                datesObjArr.push(utilFunc.dateToObj(date));
+            dataCat.date.forEach(function (date, index) {
+                dataCat.datesObjArr.push(utilFunc.dateToObj(date));
             });
-
-            $scope.jumpToArticle = function (article) {
-                if (utilFunc.exist(article, articles)) {
-                    console.log('ok');
-                    $location.path('/' + article.title);
-                } else {
-                    console.log('error');
-                    $location.path('/' + article.title + '/error');
-                }
-            };
-
-            $scope.jumpToCat = function (category) {
-                for (cat in categories) {
-                    if (cat == category) {
-                        articles = categories[cat];
-                    }
-                }
-            };
 
             console.log(getBlogData);
         });
+
+        $scope.jumpToArticle = function (article) {
+            if (utilFunc.exist(article, data.articles)) {
+                $location.path('/' + article.title);
+            } else {
+                $location.path('/' + article.title + '/error');
+            }
+        };
+
+        $scope.jumpToCat = function (category) {
+            for (i in data.categories) {
+                if (i == category) {
+                    data.articles = data.categories[i];
+                }
+            }
+        };
     }
 ]);
