@@ -4,6 +4,10 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+html,body {
+    position: relative;
+    background-color: #ecf0f1;
+}
 
 img {
     width: 100%;
@@ -46,12 +50,13 @@ img {
 }
 
 .sidebar-title-desc {
+    padding-bottom: 50px;
     text-align: center;
 }
 
 .section-sidebar .category-panel {
-    margin-left: 80px;
-    margin-top: 30px;
+    margin-left: 100px;
+    margin-top: 20px;
 }
 
 .section-sidebar .category-title {
@@ -70,34 +75,12 @@ img {
 .section-sidebar .category-list li a:hover {
 }
 
-.section-sidebar .calender-panel {
-    margin-left: 80px;
-    margin-top: 30px;
-}
-
-.section-sidebar .calender-title {
-}
-
-.section-sidebar .calender-list {
-}
-
-.section-sidebar .calender-list li {
-}
-
-.section-sidebar .calender-list li a {
-    color: #eee;
-}
-
-.section-sidebar .calender-list li a:hover {
-}
-
 /* sidebar css */
 
 /* content css */
 .section-content {
     margin-left: 300px;
     color: #666;
-    background-color: #ecf0f1;
 }
 
 .article-list {
@@ -108,7 +91,6 @@ img {
     margin: 30px;
     background-color: #fff;
     border-radius: 2px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 }
 
 .article-header {
@@ -118,9 +100,12 @@ img {
 .article-title {}
 .article-title a {
     display: block;
+    height: 40px;
     padding-left: 14px;
     border-left: 6px solid #16a085;
+    font-weight: 700;
     color: #333;
+    line-height: 38px;
 }
 .article-title a:hover {
     text-decoration: none;
@@ -199,3 +184,55 @@ img {
 }
 
 /* content css */
+/* article-markdown css */
+.typo-markdown {
+    position: relative;
+    padding: 20px 30px 20px 20px;
+    background-color: #fff;
+    border-radius: 2px;
+    margin: 30px;
+}
+.typo-markdown h2 {
+    font-size: 1.8em;
+}
+.typo-markdown h3 {
+    font-size: 1.4em;
+}
+.typo-markdown p {
+    color: #333;
+}
+.typo-markdown ul li p, .typo-markdown ol li p {
+    margin-bottom: 0;
+}
+.typo-markdown p+ul, .typo-markdown p+ul {
+    margin-bottom: 0.2em;
+}
+.pagination {
+    padding: 10px 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #fff;
+    margin: 0 30px 30px;
+    color: #333;
+    text-align: center;
+}
+
+.pagination .num {
+    display: inline-block;
+    width: 35px;
+    padding: 2px 0;
+    border: 1px solid #ddd;
+    margin: 0 3px;
+    cursor: pointer;
+}
+.pagination .num:hover {
+    opacity: .8;
+}
+.pagination .num.mark {
+    border-color: #3498db;
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* article-markdown css */

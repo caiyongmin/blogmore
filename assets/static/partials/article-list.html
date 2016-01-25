@@ -1,0 +1,26 @@
+<div class="article-list">
+    <div ng-repeat="article in data.articlesPaged track by $index" class="article-item">
+        <div class="article-header clearfix">
+            <h2 class="article-title fl"><a href="javascript:void(0)" ng-click="jumpToArticle(article)"><span ng-bind="article.title"></span></a></h2>
+            <span class="article-date fr"><span class="iconfont icon-date"></span><span ng-bind="article.date"></span></span>
+        </div>
+        <div class="article-body">
+        </div>
+        <div class="article-footer clearfix">
+            <div class="article-category-list fl">
+                <span class="article-category-info">分类：</span>
+                <a href="javascript:void(0)" ng-repeat="category in article.categories" ng-click="jumpToCat(category)"><span ng-bind="category"></span></a>
+            </div>
+            <a class="article-more-link fr" href="javascript:void(0)" ng-click="jumpToArticle(article)">Read More&gt;&gt;</a>
+        </div>
+    </div>
+</div>
+<div class="pagination clearfix">
+    <span class="num" ng-click="jumpToPage(1)" data-page="1">&lt;&lt;</span>
+    <span class="num" ng-click="jumpToPage(pagination.prev)" data-page="{{pagination.prev}}">&lt;</span>
+    <span class="num" ng-click="jumpToPage(page.num)" ng-repeat="page in pagination.pages" ng-class="{'mark': page.mark}">{{page.num}}</span>
+    <span class="num" ng-click="jumpToPage(pagination.next)" data-page="{{pagination.next}}">&gt;</span>
+    <span class="num" ng-click="jumpToPage(pagination.totalPage)" data-page="{{pagination.totalPage}}">&gt;&gt;</span>
+    <span class="text">共{{pagination.total}}篇文章</span>
+    <span class="text">共{{pagination.totalPage}}页</span>
+</div>

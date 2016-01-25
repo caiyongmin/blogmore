@@ -10,6 +10,7 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="./static/stylesheets/typo.css">
     <link rel="stylesheet" href="./static/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../bower_components/highlight/src/styles/obsidian.css"/>
     <link rel="stylesheet" href="./static/stylesheets/style.css">
 </head>
 <body ng-controller="blogController">
@@ -18,8 +19,8 @@
     <div class="avator-wrap">
         <img src="./static/images/avator.jpeg" alt="">
     </div>
-    <h1 class="sidebar-title">XBlog</h1>
-    <p class="sidebar-title-desc">一个博客生成器，Make Fun！</p>
+    <h1 class="sidebar-title">Blogmore</h1>
+    <p class="sidebar-title-desc">一个文章目录生成器，Make Fun！</p>
     <div class="category-panel">
         <p class="category-title">分类目录</p>
         <ui class="category-list">
@@ -28,9 +29,9 @@
             </li>
         </ui>
     </div>
-    <div class="calender-panel">
-        <p class="calender-title">时间分类目录</p>
-        <ui class="calender-list">
+    <div class="category-panel">
+        <p class="category-title">时间分类目录</p>
+        <ui class="category-list">
             <li ng-repeat="dateObj in dataCat.datesObjArr track by $index">
                 <a href="javascript:void(0)" ng-click="jumpToDate(dateObj)"><span ng-bind="dateObj.year"></span>年<span ng-bind="dateObj.month"></span>月</a>
             </li>
@@ -40,34 +41,23 @@
 <!-- 侧边栏 end -->
 
 <!-- 主内容区 -->
-<div class="section-content">
-    <div class="article-list clearfix">
-        <div ng-repeat="article in data.articles track by $index" class="article-item">
-            <div class="article-header clearfix">
-                <h2 class="article-title fl"><a href="javascript:void(0)" ng-click="jumpToArticle(article)">{{article.title}}</a></h2>
-                <span class="article-date fr"><span class="iconfont icon-date"></span>{{article.date}}</span>
-            </div>
-            <div class="article-body">
-                <p>一直到最近才开始调整博客的字体，之前都是全站微软雅黑了事。慢慢调整后发现 font-family 这个属性相关的知识还是不少的，整理一下常用的部分，分享于此。</p>
-                <p>Lorem ipsum dolor sit amet, conquam asperiores, assumenda autem consequuntur, dicta dignissimos eaque eius fuga fugiat hic iure natus nisi quam sint, suscipit velit. Eius, tempora.</p>
-            </div>
-            <div class="article-footer clearfix">
-                <div class="article-category-list fl">
-                    <span class="article-category-info">分类：</span>
-                    <a href="javascript:void(0)" ng-repeat="category in article.categories" ng-click="jumpToCat(category)">{{category}}</a>
-                </div>
-                <a class="article-more-link fr" href="javascript:void(0)" ng-click="jumpToArticle(article)">Read More&gt;&gt;</a>
-            </div>
-        </div>
-    </div>
-    <div ng-view></div>
+<div class="section-content clearfix">
+    <div ng-view ng-class="{'typo typo-markdown': isArticle}"></div>
 </div>
 <!-- 主内容区 end -->
 
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/angular/angular.min.js"></script>
 <script src="../bower_components/angular-route/angular-route.min.js"></script>
+<script src="../bower_components/angular-paging/dist/paging.min.js"></script>
 <script src="../bower_components/moment/moment.js"></script>
-<script src="../bower_components/highlight/src/highlight.js"></script>
+<!--<script src="../bower_components/highlight/src/highlight.js"></script>-->
+<!--<script src="../bower_components/highlight/src/languages/javascript.js"></script>-->
+<!--<script src="../bower_components/highlight/src/languages/css.js"></script>-->
+<!--<script src="../bower_components/highlight/src/languages/xml.js"></script>-->
+<!--<script src="../bower_components/highlight/src/languages/markdown.js"></script>-->
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/languages/1c.min.js"></script>
 <script src="./static/javascripts/global.js"></script>
 </body>
 </html>
