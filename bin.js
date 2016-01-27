@@ -13,6 +13,11 @@ var blogBuild = require('./lib/build');
 var publish = require('./lib/publish');
 var startup = require('./lib/startup');
 
+function clog(str) {
+    str = str || '';
+    console.log(str);
+}
+
 program
 .version(pkg.version)
 .usage(multiline(function () {
