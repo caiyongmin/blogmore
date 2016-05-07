@@ -134,7 +134,7 @@ blogModule.config(function ($routeProvider) {
     })
     .when('/:title', {
         templateUrl: function (params) {
-            return './_post/' + params.title + '.html';
+            return './post/' + params.title + '.html';
         },
         controller: 'blogController'
     })
