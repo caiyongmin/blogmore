@@ -102,7 +102,7 @@ program
 });
 
 program
-.command('serve')
+.command('server')
 .usage(multiline(function () {
     /*
 
