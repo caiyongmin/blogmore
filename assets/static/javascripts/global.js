@@ -2,7 +2,7 @@
  * Created by caiyongmin on 15/12/20.
  */
 
-var blogModule = angular.module('blogApp', ['ngRoute', 'bw.paging']);
+var blogModule = angular.module('blogApp', ['ngRoute']);
 
 blogModule.service('blogData', ['$http', '$q',
     function ($http, $q) {
@@ -12,7 +12,7 @@ blogModule.service('blogData', ['$http', '$q',
             getData: function (forceRefresh) {
                 var dfd = $q.defer();
                 if (!service.dataLoaded.genericData || forceRefresh) {
-                    $http.get('../app/db.json')
+                    $http.get('db.json')
                     .then(function success(data) {
                         angular.copy(data.data, service.returnedData);
                         service.dataLoaded.genericData = true;
@@ -24,7 +24,7 @@ blogModule.service('blogData', ['$http', '$q',
                 return dfd.promise;
             },
             addSomeData: function (someDataToAdd) {
-                $http.post('../app/db.json', someDataToAdd)
+                $http.post('db.json', someDataToAdd)
                 .then(function success(data) {
                     return service.getData(true);
                 })
@@ -134,16 +134,19 @@ blogModule.config(function ($routeProvider) {
     })
     .when('/:title', {
         templateUrl: function (params) {
-            return '../app/_post/' + params.title + '.html';
+            return './_post/' + params.title + '.html';
         },
         controller: 'blogController'
-    }).when('/:title/error', {
+    })
+    .when('/:title/error', {
         template: function (params) {
             return '似乎没有 ' + params.title + ' 这篇文章o(╯□╰)o';
         },
         controller: 'blogController'
     }).otherwise({
-        redirect: '/index'
+        redirectTo: function () {
+            return '/index';
+        }
     })
 });
 

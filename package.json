@@ -1,5 +1,5 @@
 {
-  "name": "blogmore",
+  "name": "blogmore.beta1",
   "version": "0.0.1",
   "description": "a simple blog generator",
   "main": "bin.js",
