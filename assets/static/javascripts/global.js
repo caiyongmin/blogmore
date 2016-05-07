@@ -128,7 +128,7 @@ blogModule.service('utilFunc', ['$window',
 
 blogModule.config(function ($routeProvider) {
     $routeProvider
-    .when('/index', {
+    .when('/', {
         templateUrl: './static/partials/article-list.html',
         controller: 'blogController'
     })
@@ -140,12 +140,12 @@ blogModule.config(function ($routeProvider) {
     })
     .when('/:title/error', {
         template: function (params) {
-            return '似乎没有 ' + params.title + ' 这篇文章o(╯□╰)o';
+            return '似乎没有 ' + params.title + ' 这篇文章!';
         },
         controller: 'blogController'
     }).otherwise({
         redirectTo: function () {
-            return '/index';
+            return '/';
         }
     })
 });
@@ -155,7 +155,7 @@ blogModule.controller('blogController', ['$scope', '$routeParams', '$location', 
         var getBlogData = {};
         var data = $scope.data = {};
         var dataCat = $scope.dataCat = {};
-        var pagination = $scope.pagination = {};
+        var pagination = $scope.pagination = {size: 4, offset: 0};
 
         blogData.getData().then(function (returnedData) {
             getBlogData = returnedData;
@@ -170,8 +170,6 @@ blogModule.controller('blogController', ['$scope', '$routeParams', '$location', 
                 dataCat.datesObjArr.push(utilFunc.dateToObj(date));
             });
 
-            pagination.size = 10;
-            pagination.offset = 0;
             pagination.total = getBlogData.articles.length;
             var pageData = utilFunc.getPages(pagination);
             pagination.current = pageData.current;
@@ -192,8 +190,6 @@ blogModule.controller('blogController', ['$scope', '$routeParams', '$location', 
             pagination.pages = pageData.pages;
             pagination.offsetEnd = Math.min(page * pagination.size, pagination.total);
             data.articlesPaged = data.articles.slice(pagination.offset, pagination.offsetEnd);
-            console.log(pagination);
-            console.log(data.articlesPaged);
         };
 
         $scope.jumpToArticle = function (article) {
@@ -204,21 +200,21 @@ blogModule.controller('blogController', ['$scope', '$routeParams', '$location', 
             }
         };
 
-        $scope.jumpToCat = function (category) {
-            for (i in data.categories) {
-                if (i == category) {
-                    data.articles = data.categories[i];
-                }
-            }
-        };
-
         $scope.$on('$routeChangeSuccess', function () {
             var cur = $location.path();
             console.log(cur);
-            $scope.isArticle = (cur != '/index') ? true: false;
+            $scope.isArticle = (cur != '/') ? true: false;
             jQuery('pre code').each(function (index, ele) {
                 hljs.highlightBlock(ele);
             })
-        })
+        });
+
+        $scope.jumpToCat = function (category) {
+            if (data.categories[category]) {
+                data.articles = data.categories[category];
+                pagination.total = data.articles.length;
+                $scope.jumpToPage(1);
+            }
+        };
     }
 ]);
