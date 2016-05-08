@@ -1,6 +1,6 @@
 {
   "name": "blogmore.beta1",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a simple blog generator",
   "main": "bin.js",
   "bin": {
