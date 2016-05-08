@@ -51,6 +51,7 @@ img {
 
 .sidebar-title-desc {
     padding-bottom: 50px;
+    color: #333;
     text-align: center;
 }
 
@@ -60,30 +61,22 @@ img {
 }
 
 .section-sidebar .category-title {
-}
-
-.section-sidebar .category-list {
-}
-
-.section-sidebar .category-list li {
+    color: #333;
 }
 
 .section-sidebar .category-list li a {
     color: #eee;
 }
 
-.section-sidebar .category-list li a:hover {
-}
-
 /* sidebar css */
 
 /* content css */
 .section-content {
-    margin-left: 300px;
     color: #666;
 }
 
 .article-list {
+    margin-left: 300px;
 }
 
 .article-item {
@@ -96,8 +89,6 @@ img {
 .article-header {
     padding-top: 15px;
 }
-
-.article-title {}
 .article-title a {
     display: block;
     height: 40px;
@@ -130,7 +121,6 @@ img {
     margin: 15px 25px 0;
 }
 
-.article-category-list {}
 .article-category-info {
     float: left;
     height: 18px;
@@ -189,6 +179,15 @@ img {
     background-color: #fff;
     border-radius: 2px;
     margin: 30px;
+    color: #333;
+}
+.typo-markdown h1,
+.typo-markdown h2,
+.typo-markdown h3,
+.typo-markdown h4,
+.typo-markdown h5,
+.typo-markdown h6 {
+    color: #333;
 }
 .typo-markdown h2 {
     font-size: 1.6em;
@@ -211,7 +210,7 @@ img {
     -moz-border-radius: 3px;
     border-radius: 3px;
     background-color: #fff;
-    margin: 0 30px 20px;
+    margin: 0 30px 15px 330px;;
     color: #333;
     text-align: center;
 }

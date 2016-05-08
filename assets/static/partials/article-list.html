@@ -1,3 +1,20 @@
+<!-- 侧边栏 -->
+<div class="section-sidebar">
+    <div class="avator-wrap">
+        <a href="javascript:void(0)" ng-click="jumpToCat('all')"><img src="./static/images/avator.jpeg" alt=""></a>
+    </div>
+    <h1 class="sidebar-title">Blogmore</h1>
+    <p class="sidebar-title-desc">一个文章目录生成器，Make Fun！</p>
+    <div class="category-panel">
+        <p class="category-title">分类目录</p>
+        <ul class="category-list">
+            <li ng-repeat="category in dataCat.category track by $index">
+                <a href="javascript:void(0)"><span ng-click="jumpToCat(category)" ng-bind="category"></span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 侧边栏 end -->
 <div class="article-list">
     <div ng-repeat="article in data.articlesPaged track by $index" class="article-item">
         <div class="article-header clearfix">

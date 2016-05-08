@@ -214,6 +214,10 @@ blogModule.controller('blogController', ['$scope', '$routeParams', '$location', 
                 data.articles = data.categories[category];
                 pagination.total = data.articles.length;
                 $scope.jumpToPage(1);
+            } else if (category == 'all') {
+                data.articles = getBlogData.articles;
+                pagination.total = data.articles.length;
+                $scope.jumpToPage(1);
             }
         };
     }
