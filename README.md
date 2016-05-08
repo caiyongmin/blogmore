@@ -8,12 +8,23 @@
 
 借用 [commander.js](https://github.com/tj/commander.js) 的命令行功能，来对项目进行操作。对项目的操作包括 初始化、新建博客、构建博客、本地预览、发布博客。
 
-构建博客时，把 markdown 文件转化成 html 文件，提取里面的一些信息到 db.json 文件中用于页面展示。页面展示部分使用 angularjs 框架，利用它的 $http 服务来请求 db.json 中的数据，然后根据请求到数据来展示页面。
+- 初始化时，创建 source 文件夹用来存放创建的 markdown 文件。创建项目配置文件 blogmore.json。
+
+- 新建博客时，根据博客模板新建一个 markdown 文件，放在 source 文件夹下。
+
+- 构建博客时，创建 app 文件夹用来存放构建后的文件以及从 npm 包中复制过来的静态资源。之后的发布就是发布这个文件夹中的文件。构建过程主要是
+把 markdown 文件转化成 html 文件，并提取里面的一些信息到 db.json 文件中用于页面展示。
+
+- 本地预览利用 NodeJS 的 Koa 框架来启动项目，默认为 3000 端口。可以使用 `-p 或 --port [端口号]` 来指定端口启动。
+
+- 发布时，把 app 文件夹下的静态文件 push 到 blogmore.json 文件配置的 GitHub 地址的 gh-pages 分支上，实现网上预览。
 
 ## 安装
 
+由于 blogmore 这个 npm 包名已经被占了，还有这个包现在只是一个测试版，所以取了 blogmore.beta1 这个包名。
+
 ```bash
-$ [sudo] npm install -g blogmore
+$ [sudo] npm install -g blogmore.beta1
 ```
 
 ## 初始化
@@ -41,6 +52,9 @@ $ bm build
 
 ```bash
 $ bm server
+或
+$ bm server -p [端口号]
+$ bm server --port [端口号]
 ```
 
 ## 发布博客
