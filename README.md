@@ -66,7 +66,3 @@ $ bm server --port [端口号]
 ```bash
 $ bm publish
 ```
-
-## 感谢
-
-这个 repo 是参照[天镶](https://github.com/LingyuCoder)的[learnmore](https://github.com/ly-tools/learnmore)项目来写的。在此表示感谢！
