@@ -66,3 +66,5 @@ $ bm server --port [端口号]
 ```bash
 $ bm publish
 ```
+
+最后，欢迎提 issue 给我!
